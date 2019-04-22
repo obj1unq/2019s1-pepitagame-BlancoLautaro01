@@ -2,12 +2,12 @@ import ciudades.*
 import wollok.game.*
 
 object pepita {
-/*En la primer parte se modifico: el metodo image()
-  						 el metodo volaHacia(unaCiudad)
-  						 el metodo move(nuevaPosicion)
+/*En la primer parte se modificaron los metodos: image()
+  						 						 volaHacia(unaCiudad)
+  												 move(nuevaPosicion)
   						 
-  y se agregaron los metodos: say(mensaje)
-  							  laEnergiaActualAlcanzaParaVolarA(pisicion)	*/
+  y se agregaron los metodos: laEnergiaActualAlcanzaParaVolarA(posicion)
+  							  volaYCome(comida)	*/
   							  
 	//Atributos de pepita junto a sus getter y setters.
 	var property energia = 100
@@ -16,7 +16,7 @@ object pepita {
 	
 	//Da la imagen correspondiente a pepita.
 	method image() {
-		return if(self.energia()>100){ "pepita-gorda-raw" }
+		return if(self.energia()>100){ "pepita-gorda-raw.png" }
 		else{ "pepita.png"}
 	}
 	
@@ -25,13 +25,20 @@ object pepita {
 		energia = energia + comida.energia()
 	}
 	
+	//Hace volar a pepita hacia la posicion de la comida y comerla, si le alcanza la energia para el vuelo.
+	method volaYCome(comida){	
+		self.move(comida.position())
+		self.come(comida)
+		game.removeVisual(comida)
+	}
+	
 	//Mueve a pepita hacia unaCiudad si no esta en ella y le alcanza la energia.
 	method volaHacia(unaCiudad) {
 		if (ciudad != unaCiudad) {
 			self.move(unaCiudad.position())
 			ciudad = unaCiudad
 		}
-		else{ self.say("Ya estoy en" + unaCiudad) }
+		else{ game.say(self, "Ya estoy en" + unaCiudad) }
 	}
 	
 	//Retorna la energia que costaria ese vuelo.
@@ -43,14 +50,11 @@ object pepita {
 			energia -= self.energiaParaVolar(position.distance(nuevaPosicion))
 			self.position(nuevaPosicion)
 		}
-		else{ self.say("Dame de comer primero!")}
+		else{ game.say(self, "Dame de comer primero!")}
 	}
 	
 	//Retorna lo que el nombre especifica.
 	method laEnergiaActualAlcanzaParaVolarA(nuevaPosicion){	
-		return (self.energia() < self.energiaParaVolar(position.distance(nuevaPosicion)))
+		return (self.energia() > self.energiaParaVolar(position.distance(nuevaPosicion)))
 	}
-	
-	//Pepita dice el mensaje por pantalla.
-	method say(unMensaje) = unMensaje
 }

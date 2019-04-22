@@ -21,24 +21,20 @@ program PepitaGame {
 //	TECLADO
 	keyboard.h().onPressDo { game.say(pepita, "Hola chiques!") }
 
+	//Volar a ciudades
 	keyboard.v().onPressDo { pepita.volaHacia(villaGesell) }
 	keyboard.b().onPressDo { pepita.volaHacia(buenosAires) }
-
+	
+	//Moverse
 	keyboard.up().onPressDo { pepita.move(pepita.position().up(1)) }
 	keyboard.down().onPressDo { pepita.move(pepita.position().down(1)) }
 	keyboard.left().onPressDo { pepita.move(pepita.position().left(1)) }
 	keyboard.right().onPressDo { pepita.move(pepita.position().right(1)) }
 	
-	//Comer Manzana
-	keyboard.m().onPressDo { pepita.move(manzana.position())
-							 pepita.come(manzana)
-							 game.removeVisual(manzana) }
-				
-	//Comer Alpiste
-	keyboard.a().onPressDo { pepita.move(alpiste.position())
-							 pepita.come(alpiste)
-							 game.removeVisual(alpiste) }		
-		
+	//Comer
+	keyboard.m().onPressDo { pepita.volaYCome(manzana) }
+	keyboard.m().onPressDo { pepita.volaYCome(alpiste) }
+
 //	START
 	game.start() 
 }
