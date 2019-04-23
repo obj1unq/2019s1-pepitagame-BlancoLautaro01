@@ -7,7 +7,9 @@ object pepita {
   												 move(nuevaPosicion)
   						 
   y se agregaron los metodos: laEnergiaActualAlcanzaParaVolarA(posicion)
-  							  volaYCome(comida)	*/
+  							  volaYCome(comida)
+  							  colisionasteCon(persona)	*/
+  							  
   							  
 	//Atributos de pepita junto a sus getter y setters.
 	var property energia = 100
@@ -56,5 +58,10 @@ object pepita {
 	//Retorna lo que el nombre especifica.
 	method laEnergiaActualAlcanzaParaVolarA(nuevaPosicion){	
 		return (self.energia() > self.energiaParaVolar(position.distance(nuevaPosicion)))
+	}
+	
+	//Colision con roque.
+	method colisionasteCon(persona){
+		persona.alimentarA(self)
 	}
 }
