@@ -1,20 +1,14 @@
+import roque.*
 import ciudades.*
+import comidas.*
 import wollok.game.*
 
 object pepita {
-/*En la primer parte se modificaron los metodos: image()
-  						 						 volaHacia(unaCiudad)
-  												 move(nuevaPosicion)
-  						 
-  y se agregaron los metodos: laEnergiaActualAlcanzaParaVolarA(posicion)
-  							  volaYCome(comida)
-  							  colisionasteCon(persona)	*/
-  							  
-  							  
+
 	//Atributos de pepita junto a sus getter y setters.
 	var property energia = 100
-	var property ciudad = buenosAires 
-	var property position = game.at(3,3)
+	var property position = game.at(1,1)
+	var property ciudad = buenosAires
 	
 	//Da la imagen correspondiente a pepita.
 	method image() {
@@ -23,14 +17,8 @@ object pepita {
 	}
 	
 	//Da de comer a pepita.
-	method come(comida) {
+	method comer(comida) {
 		energia = energia + comida.energia()
-	}
-	
-	//Hace volar a pepita hacia la posicion de la comida y comerla, si le alcanza la energia para el vuelo.
-	method volaYCome(comida){	
-		self.move(comida.position())
-		self.come(comida)
 		game.removeVisual(comida)
 	}
 	
@@ -60,8 +48,8 @@ object pepita {
 		return (self.energia() > self.energiaParaVolar(position.distance(nuevaPosicion)))
 	}
 	
-	//Colision con roque.
-	method colisionasteCon(persona){
-		persona.alimentarA(self)
+	//Saluda
+	method saludar(persona){
+		game.say(persona, "Hola Pepita")
 	}
 }

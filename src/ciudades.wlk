@@ -1,3 +1,6 @@
+import roque.*
+import ciudades.*
+import comidas.*
 import wollok.game.*
 
 //Las ciudades ahora sabe =n que hacer si roque colisiona con ellas.
