@@ -42,7 +42,7 @@ program PepitaGame {
 	keyboard.a().onPressDo { pepita.move(pepita.position().left(1)) }	
 	keyboard.d().onPressDo { pepita.move(pepita.position().right(1)) }
 		
-	//Comer
+	//Soltar Comidas
 	keyboard.m().onPressDo { roque.soltaManzana() }
 	keyboard.l().onPressDo { roque.soltaAlpiste() }
 

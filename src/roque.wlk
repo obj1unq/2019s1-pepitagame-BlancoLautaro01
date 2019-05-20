@@ -23,13 +23,16 @@ object roque {
 		const alpiste = new Alpiste()
 		alpiste.granos(cantAlpiste)
 		alpiste.position(self.position())
-		if (cantAlpiste > 0){	game.addVisualIn(alpiste, self.position())	}
-		else {	}
+		self.ponerAlpisteSi(alpiste)
 		cantAlpiste = 0
 	}
 	
 	method colisionasteCon(ave){
-		game.say(ave, "Hola Roque")
-		ave.saludar(self)
+		game.say(self, "Hola Pepita")
+		ave.saludar()
+	}
+	
+	method ponerAlpisteSi(alpiste){
+		if (cantAlpiste > 0) {	game.addVisualIn(alpiste, self.position())	}
 	}
 }

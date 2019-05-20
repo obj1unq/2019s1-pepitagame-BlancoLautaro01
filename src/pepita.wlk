@@ -49,7 +49,7 @@ object pepita {
 	}
 	
 	//Saluda
-	method saludar(persona){
-		game.say(persona, "Hola Pepita")
+	method saludar(){
+		game.say(self, "Hola Roque")
 	}
 }

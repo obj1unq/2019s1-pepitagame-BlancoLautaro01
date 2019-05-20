@@ -3,7 +3,7 @@ import ciudades.*
 import comidas.*
 import wollok.game.*
 
-//Los alimentos ahora conocen su ubicacion y La colision con roque.
+//Los alimentos ahora conocen su ubicacion y La colision con algun ave.
 class Manzana {
 	var property position
 	
